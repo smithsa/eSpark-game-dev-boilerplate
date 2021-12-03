@@ -1,11 +1,11 @@
 const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
 const webpack = require('webpack');
 const gulpWebpack = require('webpack-stream');
 const webpackConfig = require('./webpack.config');
+const imagemin = require('gulp-imagemin');
 
 function bundleJavascriptViaWebpack () {
-  gulp.src('src/js/index.js')
+  return gulp.src('src/js/index.js')
     .pipe(
       gulpWebpack(webpackConfig, webpack)
     )
@@ -14,8 +14,11 @@ function bundleJavascriptViaWebpack () {
 gulp.task("bundleJavascriptViaWebpack", bundleJavascriptViaWebpack);
 
 function compressImages() {
-  return gulp.src("./src/img/*")
-    .pipe(imagemin())
+  return gulp.src("./src/img/**/*.{png,jpg,jpeg,JPG,svg}")
+    .pipe(imagemin({
+      progressive: true,
+      optimizationLevel: 7
+    }))
     .pipe(gulp.dest("./dist/img"));
 }
 
