@@ -1,4 +1,4 @@
-import {Scene} from 'phaser';
+import {Scene, Math, Geom, Curves} from 'phaser';
 
 var bg,bg2,bg3;
 var rainbow,rainb_start,gamename,playbtn,questbtn,clock,clock_hint,minute_hand,hour_hand,clock_point,replaybtn,particles,emitter,emitterWin;
@@ -77,8 +77,8 @@ export default class GameScene extends Scene {
     this.tweens.add({targets: bg2,y: 650,duration: 350,ease: 'Back',easeParams: [ 1 ],delay: 0 });
     gamename = this.add.sprite(512, 100-200, 'mainatlas','gui/gamename').setDepth(0.1);
     this.tweens.add({targets: gamename,y: 100,duration: 300,ease: 'Back',easeParams: [ 1 ],delay: 0 });
-    var shape = new Phaser.Geom.Circle(178, 176, 150);
-    playbtn = this.add.sprite(512, 420+400, 'mainatlas','gui/playbtn').setDepth(0.1).setInteractive(shape, Phaser.Geom.Circle.Contains);
+    var shape = new Geom.Circle(178, 176, 150);
+    playbtn = this.add.sprite(512, 420+400, 'mainatlas','gui/playbtn').setDepth(0.1).setInteractive(shape, Geom.Circle.Contains);
     playbtn.setScale(0.85);
     playbtn.work = true;
     this.tweens.add({targets: playbtn,y: 410,duration: 300,ease: 'Back',easeParams: [ 1 ],delay: 0 });
@@ -141,12 +141,12 @@ export default class GameScene extends Scene {
 
     graphics = this.add.graphics().setDepth(1);
 
-    follower = { t: 0.6, vec: new Phaser.Math.Vector2() };
+    follower = { t: 0.6, vec: new Math.Vector2() };
 
-    path = new Phaser.Curves.Path();
-    path.add(new Phaser.Curves.Ellipse(515, 390, 280,300));
-    path2 = new Phaser.Curves.Path();
-    path2.add(new Phaser.Curves.Ellipse(515-440, 450, 450,300));
+    path = new Curves.Path();
+    path.add(new Curves.Ellipse(515, 390, 280,300));
+    path2 = new Curves.Path();
+    path2.add(new Curves.Ellipse(515-440, 450, 450,300));
 
     if(particles == null) {
       particles = this.add.particles('mainatlas').setDepth(0.7);
@@ -194,7 +194,7 @@ export default class GameScene extends Scene {
       kd.twn = null;
       kd.work = false;
       kd.move = false;
-      kd.flwr = { t: 0.7, vec: new Phaser.Math.Vector2(), kspr:kd};
+      kd.flwr = { t: 0.7, vec: new Math.Vector2(), kspr:kd};
       kd.sc_save = 0.85;
 
       kids.push(kd);

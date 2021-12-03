@@ -1,7 +1,7 @@
 {
-  "name": "espark-game-dev-boilerplate",
+  "name": "eSpark-game-dev-boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate configurations to create eSpark HTML5 web games",
+  "description": "Boilerplate development configurations to create eSpark HTML5 web games",
   "private": true,
   "author": "Sade Smith",
   "license": "MIT",

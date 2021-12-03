@@ -7,7 +7,7 @@ const CompressionPlugin  = require("compression-webpack-plugin");
 module.exports = {
   entry: './src/js/index.js',
   output: {
-    filename: './js/bundle.min.js',
+    filename: './js/[name].bundle.min.js',
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'production',
@@ -20,7 +20,16 @@ module.exports = {
           comments: false,
         },
       },
-    })]
+    })],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   module: {
     rules: [
