@@ -1,0 +1,31 @@
+{
+  "name": "espark-game-dev-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate configurations to create eSpark HTML5 web games",
+  "private": true,
+  "author": "Sade Smith",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp"
+  },
+  "dependencies": {
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^9.0.1",
+    "copy-webpack-plugin": "^10.0.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^8.0.0",
+    "terser-webpack-plugin": "^5.2.5",
+    "webpack": "^5.64.0",
+    "webpack-stream": "^7.0.0",
+    "yarn": "^1.22.17"
+  }
+}
