@@ -6,7 +6,7 @@
   "author": "Sade Smith",
   "license": "MIT",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp && ./compress-audio.sh"
   },
   "dependencies": {
     "phaser": "^3.55.2"
