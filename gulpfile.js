@@ -63,4 +63,4 @@ function createAudioSpritesFiles(sourcePath, outputPath) {
 }
 
 
-gulp.task('default', gulp.series("bundleJavascriptViaWebpack", "compressImages", "createAudioSprites"));
+gulp.task('default', gulp.series("bundleJavascriptViaWebpack", "createAudioSprites", "compressImages"));

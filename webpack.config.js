@@ -60,6 +60,7 @@ module.exports = {
       patterns: [
         { from: "./src/fonts", to: "./fonts" },
         { from: "./src/img", to: "./img" },
+        { from: "./src/music", to: "./music" },
         { from: "./src/index.html", to: "./index.html" }
       ],
     }),
