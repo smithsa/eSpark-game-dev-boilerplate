@@ -19,12 +19,12 @@ export default class PreloaderScene extends Scene {
       loa.fillRect(512-100, 354, 200*value, 18);
     });
 
-    this.load.path = 'src/img/';
+    this.load.path = './img/';
     this.load.image('background', 'bg.png');
     this.load.multiatlas('mainatlas', 'mainatlas.json');
 
     // Sounds
-    this.load.path = 'src/sounds/';
+    this.load.path = './sounds/';
     this.load.audio('incorrect',['incorrect.webm','incorrect.m4a']);
     this.load.audio('correct',['correct.webm','correct.m4a']);
     this.load.audio('back',['back.webm','back.m4a']);
@@ -35,7 +35,7 @@ export default class PreloaderScene extends Scene {
     this.load.audio('gamemusic',['gamemusic.webm','gamemusic.m4a']);
 
     // Voice Over
-    this.load.path = 'src/voice/';
+    this.load.path = './voice/';
     this.load.audio('Click_a_kid',['Click a kid to ride the rainbow.webm','Click a kid to ride the rainbow.m4a']);
     this.load.audio('Completed',['Completed Game.webm','Completed Game.m4a']);
     this.load.audio('FirstQ',['First Question.webm','First Question.m4a']);

@@ -1,4 +1,4 @@
-import {Scene, Math, Geom, Curves} from 'phaser';
+import {Scene, Math as PMath, Geom, Curves} from 'phaser';
 
 var bg,bg2,bg3;
 var rainbow,rainb_start,gamename,playbtn,questbtn,clock,clock_hint,minute_hand,hour_hand,clock_point,replaybtn,particles,emitter,emitterWin;
@@ -141,7 +141,7 @@ export default class GameScene extends Scene {
 
     graphics = this.add.graphics().setDepth(1);
 
-    follower = { t: 0.6, vec: new Math.Vector2() };
+    follower = { t: 0.6, vec: new PMath.Vector2() };
 
     path = new Curves.Path();
     path.add(new Curves.Ellipse(515, 390, 280,300));
@@ -194,7 +194,7 @@ export default class GameScene extends Scene {
       kd.twn = null;
       kd.work = false;
       kd.move = false;
-      kd.flwr = { t: 0.7, vec: new Math.Vector2(), kspr:kd};
+      kd.flwr = { t: 0.7, vec: new PMath.Vector2(), kspr:kd};
       kd.sc_save = 0.85;
 
       kids.push(kd);
