@@ -5,7 +5,7 @@ compress_audio () {
   find * -maxdepth 0 -type f -exec rm {} \;
   cp -a ./temp/. .
   rm -rf temp
-  cd ../..
+  cd -
 }
 
 compress_audio "dist/sounds"

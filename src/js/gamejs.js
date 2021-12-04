@@ -3,6 +3,7 @@ import {Scene, Math as PMath, Geom, Curves} from 'phaser';
 var bg,bg2,bg3;
 var rainbow,rainb_start,gamename,playbtn,questbtn,clock,clock_hint,minute_hand,hour_hand,clock_point,replaybtn,particles,emitter,emitterWin;
 var follower,path,path2,graphics;
+var fx;
 
 var menuarr = [];
 var levs = [];

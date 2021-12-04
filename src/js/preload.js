@@ -25,30 +25,33 @@ export default class PreloaderScene extends Scene {
 
     // Sounds
     this.load.path = './sounds/';
-    this.load.audio('incorrect',['incorrect.webm','incorrect.m4a']);
-    this.load.audio('correct',['correct.webm','correct.m4a']);
-    this.load.audio('back',['back.webm','back.m4a']);
-    this.load.audio('click',['click.webm','click.m4a']);
-    this.load.audio('ding',['ding.webm','ding.m4a']);
-    this.load.audio('slide',['slide.webm','slide.m4a']);
-    this.load.audio('win_ding',['win_ding.webm','win_ding.m4a']);
+    this.load.audio('incorrect',['incorrect.webm']);
+    this.load.audio('correct',['correct.webm']);
+    this.load.audio('back',['back.webm']);
+    this.load.audio('click',['click.webm']);
+    this.load.audio('ding',['ding.webm']);
+    this.load.audio('slide',['slide.webm']);
+    this.load.audio('win_ding',['win_ding.webm']);
+
+    // Music
+    this.load.path = './music/';
     this.load.audio('gamemusic',['gamemusic.webm','gamemusic.m4a']);
 
     // Voice Over
     this.load.path = './voice/';
-    this.load.audio('Click_a_kid',['Click a kid to ride the rainbow.webm','Click a kid to ride the rainbow.m4a']);
-    this.load.audio('Completed',['Completed Game.webm','Completed Game.m4a']);
-    this.load.audio('FirstQ',['First Question.webm','First Question.m4a']);
-    this.load.audio('GameDir',['Game Directions.webm','Game Directions.m4a']);
-    this.load.audio('RightAnsw1',['Right Answer Behavior 1.webm','Right Answer Behavior 1.m4a']);
-    this.load.audio('RightAnsw2',['Right Answer Behavior 2.webm','Right Answer Behavior 2.m4a']);
-    this.load.audio('RightAnsw3',['Right Answer Behavior 3.webm','Right Answer Behavior 3.m4a']);
-    this.load.audio('RightAnsw4',['Right Answer Behavior 4.webm','Right Answer Behavior 4.m4a']);
-    this.load.audio('Intro',['Story Intro.webm','Story Intro.m4a']);
-    this.load.audio('Title',['Title.webm','Title.m4a']);
-    this.load.audio('WrongAnsw1',['Wrong Answer Behavior 1.webm','Wrong Answer Behavior 1.m4a']);
-    this.load.audio('WrongAnsw2',['Wrong Answer Behavior 2.webm','Wrong Answer Behavior 2.m4a']);
-    this.load.audio('WrongAnsw3',['Wrong Answer Behavior 3.webm','Wrong Answer Behavior 3.m4a']);
+    this.load.audio('Click_a_kid',['Click a kid to ride the rainbow.m4a']);
+    this.load.audio('Completed',['Completed Game.m4a']);
+    this.load.audio('FirstQ',['First Question.m4a']);
+    this.load.audio('GameDir',['Game Directions.m4a']);
+    this.load.audio('RightAnsw1',['Right Answer Behavior 1.m4a']);
+    this.load.audio('RightAnsw2',['Right Answer Behavior 2.m4a']);
+    this.load.audio('RightAnsw3',['Right Answer Behavior 3.m4a']);
+    this.load.audio('RightAnsw4',['Right Answer Behavior 4.m4a']);
+    this.load.audio('Intro',['Story Intro.m4a']);
+    this.load.audio('Title',['Title.m4a']);
+    this.load.audio('WrongAnsw1',['Wrong Answer Behavior 1.m4a']);
+    this.load.audio('WrongAnsw2',['Wrong Answer Behavior 2.m4a']);
+    this.load.audio('WrongAnsw3',['Wrong Answer Behavior 3.m4a']);
 
     this.load.path = '';
   }
