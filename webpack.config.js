@@ -64,7 +64,9 @@ module.exports = {
         { from: "./src/index.html", to: "./index.html" }
       ],
     }),
-    new JsonMinimizerPlugin(),
+    new JsonMinimizerPlugin( {
+      exclude: /\/src/
+    }),
     new CompressionPlugin({
       exclude: /\/src/
     }),
