@@ -26,10 +26,11 @@ function compressImages() {
 
 gulp.task("compressImages", compressImages);
 
-function createSoundsAudioSprite() {
+function createAudioSprites() {
   return new Promise(function(resolve, reject) {
     try {
-      createAudioSprites('./src/sounds', './dist/sounds/sounds_audio_sprite');
+      createAudioSpritesFiles('./src/sounds', './dist/sounds/sounds_audio_sprite');
+      createAudioSpritesFiles('./src/voice', './dist/voice/voice_audio_sprite');
       resolve();
     } catch (err) {
       reject(err);
@@ -37,23 +38,29 @@ function createSoundsAudioSprite() {
   });
 }
 
-gulp.task("createSoundsAudioSprite", createSoundsAudioSprite);
+gulp.task("createAudioSprites", createAudioSprites);
 
-function createAudioSprites(sourcePath, outputPath) {
+
+function createAudioSpritesFiles(sourcePath, outputPath) {
   let files = [];
-  let audioSpriteId = 1;
+  console.log("sourcePath", sourcePath);
   fs.readdirSync(sourcePath).forEach(file => {
+    let filePath = `${sourcePath}/${file}`;
     if(file.match(/(webm|m4a|mp3|wav|ogg|ac3)/)) {
-      files.push(`${sourcePath}/${file}`);
+      files.push(filePath)
     }
   });
-  let opts = {output: `${outputPath}_${audioSpriteId}`};
+
+
+  let opts = {output: `${outputPath}`};
   audiosprite(files, opts, function(err, obj) {
     if (err) return console.error(err)
+    fs.writeFile(`${outputPath}.json`, JSON.stringify(obj, null, 2), () => {
+      console.log(JSON.stringify(obj, null, 2))
+    })
 
-    console.log(JSON.stringify(obj, null, 2))
   });
 }
 
 
-gulp.task('default', gulp.series("bundleJavascriptViaWebpack", "compressImages"));
+gulp.task('default', gulp.series("bundleJavascriptViaWebpack", "compressImages", "createAudioSprites"));
