@@ -1,9 +1,9 @@
 # System and IDE files
-.DS_Store/
-.idea/
+.DS_Store
+.idea
 
 # Vendors
-node_modules/
+node_modules
 
 # Build
 dist/

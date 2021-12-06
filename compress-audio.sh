@@ -1,14 +1,14 @@
 #!/bin/bash
 
+TEMP_DIR="./temp"
+BITRATE_KB=64
 function traverse_directory_and_ffmpeg_compress() {
-  TEMP_DIR="./temp"
-  find * -maxdepth 1 -type f -exec ffmpeg -y -i ./{} -map 0:a:0 -b:a 96k temp/{} \;
+  find * -maxdepth 0 -type f -exec ffmpeg -y -i ./{} -map 0:a:0 -b:a "${BITRATE_KB}"k "$TEMP_DIR"/{} \;
 }
 
 compress_audio () {
   input_directory="$1"
   cd "$input_directory"
-  TEMP_DIR="./temp"
   if [ ! -d "$TEMP_DIR" ]; then
     mkdir "$TEMP_DIR";
     traverse_directory_and_ffmpeg_compress
