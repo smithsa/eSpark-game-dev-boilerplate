@@ -7,7 +7,6 @@ export default class PreloaderScene extends Scene {
     });
   }
 
-  // TODO change load paths to dist folder
   preload () {
     var loa = this.add.graphics(0, 0);
     loa.fillStyle(0xffffff, 1);
@@ -25,6 +24,7 @@ export default class PreloaderScene extends Scene {
 
     // Sounds
     this.load.path = './sounds/';
+    this.load.audioSprite('sfx', './sounds_audio_sprite.json', ['./sounds_audio_sprite.ogg', './sounds_audio_sprite.m4a']);
     this.load.audio('incorrect',['incorrect.webm']);
     this.load.audio('correct',['correct.webm']);
     this.load.audio('back',['back.webm']);

@@ -30,7 +30,6 @@ function createAudioSprites() {
   return new Promise(function(resolve, reject) {
     try {
       createAudioSpritesFiles('./src/sounds', './dist/sounds/sounds_audio_sprite');
-      createAudioSpritesFiles('./src/voice', './dist/voice/voice_audio_sprite');
       resolve();
     } catch (err) {
       reject(err);
@@ -43,7 +42,7 @@ gulp.task("createAudioSprites", createAudioSprites);
 
 function createAudioSpritesFiles(sourcePath, outputPath) {
   let files = [];
-  console.log("sourcePath", sourcePath);
+
   fs.readdirSync(sourcePath).forEach(file => {
     let filePath = `${sourcePath}/${file}`;
     if(file.match(/(webm|m4a|mp3|wav|ogg|ac3)/)) {

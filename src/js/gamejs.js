@@ -3,7 +3,7 @@ import {Scene, Math as PMath, Geom, Curves} from 'phaser';
 var bg,bg2,bg3;
 var rainbow,rainb_start,gamename,playbtn,questbtn,clock,clock_hint,minute_hand,hour_hand,clock_point,replaybtn,particles,emitter,emitterWin;
 var follower,path,path2,graphics;
-var fx;
+var sfx;
 
 var menuarr = [];
 var levs = [];
@@ -44,13 +44,10 @@ export default class GameScene extends Scene {
     bg = this.add.sprite(511, 305,'background').setOrigin(0.5).setScale(1.05,1);
     bg2 = this.add.sprite(512, 480+400, 'mainatlas','gui/bg2').setDepth(0.1);
 
+    //	set-up audio sprite
+    sfx = this.sound.addAudioSprite('sfx');
+
     music = this.sound.add('gamemusic',{loop:true,volume:0.5});
-    incorrectS = this.sound.add('incorrect',{volume:1});
-    backS = this.sound.add('back',{volume:1});
-    clickS = this.sound.add('click',{volume:1});
-    dingS = this.sound.add('ding',{volume:1});
-    slideS = this.sound.add('slide',{volume:1});
-    windingS = this.sound.add('win_ding',{volume:1});
 
     clickkidV = this.sound.add('Click_a_kid',{volume:1});
     completedV = this.sound.add('Completed',{volume:1});
@@ -94,10 +91,10 @@ export default class GameScene extends Scene {
   startIntro() {
     if(playbtn.work == true) {
       playbtn.work = false;
-      clickS.play();
+      sfx.play('click');
       TitleV.on('complete', this.TitleEnd,this);
       TitleV.play();
-      slideS.play();
+      sfx.play('slide');
       this.tweens.add({targets: playbtn,scaleX: 0.01,scaleY:0.01,duration: 100,ease: 'Linear',delay: 0, onComplete() { this.targets[0].destroy();} });
       rainb_start.setScale(0.5,1);
       this.tweens.add({targets: rainb_start,angle: 0,scaleX:1,duration: 300,ease: 'Sine.EasyOut',easeParams: [ 1 ],delay: 0 });
@@ -312,10 +309,10 @@ export default class GameScene extends Scene {
     if(this.work == true) {
       this.scene.stopVoice();
       this.work = false;
-      clickS.play();
+      sfx.play("click");
       if(this.correct == true) {
         this.cont.setVisible(true);
-        dingS.play();
+        sfx.play('ding');
         emitter.start();
         this.scene.time.addEvent({delay: 150,
           callback: ()=>{
@@ -344,7 +341,7 @@ export default class GameScene extends Scene {
 
       } else {
         clock_hint.setVisible(true);
-        incorrectS.play();
+        sfx.play('incorrect');
         this.setVisible(false);
         this.cont.setVisible(false);
         this.txt.setVisible(false);
@@ -359,7 +356,7 @@ export default class GameScene extends Scene {
   clickKid() {
     if(WaitKidClick == true) {
       WaitKidClick = false;
-      clickS.play();
+      sfx.play('click');
       this.setScale(0.9);
       this.move = true;
       kid_move = this;
@@ -382,7 +379,7 @@ export default class GameScene extends Scene {
   }
   slideRainbow() {
     WaitMove = true;
-    slideS.play();
+    sfx.play('slide');
     for (let i = 0; i < kids.length; i++) {
       if(kids[i].move) {kids[i].play('slide'+(kids[i].id));}
     }
@@ -432,8 +429,8 @@ export default class GameScene extends Scene {
   }
   clickKidWin() {
     if(this.dragB == false && this.work == true) {
-      backS.play();
-      slideS.play();
+      sfx.play('back');
+      sfx.play('slide');
       this.flwr.t = 0.73;
       this.work = false;
       this.scaleY = 0.9;
@@ -484,7 +481,7 @@ export default class GameScene extends Scene {
       gameObject.setDepth(0.41);
     });
     this.input.on('dragend', function (pointer, gameObject) {
-      backS.play();
+      sfx.play('back');
       if(gameObject.x > 600) {
         this.scene.tweens.add({targets: gameObject,x: gameObject.startX,y: gameObject.startY,ease: 'Sine.easeOut',duration: 100,onComplete() {this.targets[0].dragB = false;}});
       } else {
@@ -506,7 +503,7 @@ export default class GameScene extends Scene {
     emitterWin.start();
     this.time.addEvent({delay: 300,
       callback: ()=>{
-        windingS.play();
+        sfx.play('win_ding');
       }
     });
     this.time.addEvent({delay: 500,
@@ -540,7 +537,7 @@ export default class GameScene extends Scene {
     }
   }
   fromWinToMenu () {
-    clickS.play();
+    sfx.play('click');
     replaybtn.destroy();replaybtn = null;
     rainbow.destroy();
     bg3.destroy();
@@ -575,7 +572,7 @@ export default class GameScene extends Scene {
   }
   questClick() {
     this.stopVoice();
-    clickS.play();
+    sfx.play('click');
     firstquestV.play();
   }
   stopVoice() {

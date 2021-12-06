@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: './js/[name].bundle.min.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   mode: 'production',
   optimization: {
