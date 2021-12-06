@@ -1,6 +1,6 @@
 import {Scene, Math as PMath, Geom, Curves} from 'phaser';
 
-var bg,bg2,bg3;
+var bg2,bg3;
 var rainbow,rainb_start,gamename,playbtn,questbtn,clock,clock_hint,minute_hand,hour_hand,clock_point,replaybtn,particles,emitter,emitterWin;
 var follower,path,path2,graphics;
 var sfx;
@@ -20,14 +20,7 @@ var TaskHourS = '';
 var TaskMinuteS = '';
 var WaitKidClick = false;
 var WaitMove = false;
-
 var music;
-var incorrectS;
-var backS;
-var clickS;
-var dingS;
-var slideS;
-var windingS;
 
 var clickkidV,completedV,firstquestV,gamedirV,RightAnsw1V,RightAnsw2V,RightAnsw3V,RightAnsw4V,IntroV,TitleV,WrongAnsw1V,WrongAnsw2V,WrongAnsw3V;
 
@@ -41,7 +34,7 @@ export default class GameScene extends Scene {
   create() {
     console.log('%cSTATE::GAME', 'color: #fff; background: #f0f;');
 
-    bg = this.add.sprite(511, 305,'background').setOrigin(0.5).setScale(1.05,1);
+    this.add.sprite(511, 305,'background').setOrigin(0.5).setScale(1.05,1);
     bg2 = this.add.sprite(512, 480+400, 'mainatlas','gui/bg2').setDepth(0.1);
 
     //	set-up audio sprite
@@ -614,7 +607,8 @@ export default class GameScene extends Scene {
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  update(t, dt) {
+
+  update() {
     if(follower != null) this.drw();
     if(replaybtn != null) this.drw2();
   }
