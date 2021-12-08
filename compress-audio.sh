@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TEMP_DIR="./temp"
-BITRATE_KB=64
+BITRATE_KB=126
 function traverse_directory_and_ffmpeg_compress() {
   find * -maxdepth 0 -type f -exec ffmpeg -y -i ./{} -map 0:a:0 -b:a "${BITRATE_KB}"k "$TEMP_DIR"/{} \;
 }

@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
 const gulpWebpack = require('webpack-stream');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.prod.js');
 const imagemin = require('gulp-imagemin');
 const audiosprite = require('audiosprite');
 const fs = require("fs");
@@ -55,7 +55,7 @@ function createAudioSpritesFiles(sourcePath, outputPath) {
   audiosprite(files, opts, function(err, obj) {
     if (err) return console.error(err)
     fs.writeFile(`${outputPath}.json`, JSON.stringify(obj, null, 2), () => {
-      console.log(JSON.stringify(obj, null, 2))
+      console.log(`%cAudio sprite files generated with ${outputPath}.json`, ['color: #00FF00'])
     })
 
   });
