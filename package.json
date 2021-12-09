@@ -6,9 +6,10 @@
   "author": "Sade Smith",
   "license": "MIT",
   "scripts": {
-    "build": "gulp && ./compress-audio.sh",
-    "dev": "webpack serve --config \"./webpack.dev.js\"",
-    "audios-prites": "gulp createAudioSprites",
+    "build": "gulp",
+    "build-with-audio-compression": "gulp && ./compress-audio.sh",
+    "watch": "webpack serve --config \"./webpack.dev.js\"",
+    "generate-audios-sprites": "gulp createAudioSprites",
     "compress-audio": "./compress-audio.sh"
   },
   "dependencies": {
