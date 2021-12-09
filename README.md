@@ -35,11 +35,11 @@ After all requirements are met follow the instructions below:
 
 #### Running the development server
 
-To use the project in development, load your source files in the src directory and run:
+To use the project in development, load your source files in the `/src` directory and run:
 
 `yarn watch`
 
-A node development server will be started at [http://localhost:8000](http://localhost:8000). The server runs at the /dist directory. 
+A node development server will be started at [http://localhost:8000](http://localhost:8000). The server runs at the `/dist` directory. 
 Hot loading is enabled, so you will not need to refresh the page to see the changes on the server.
 
 N.B. The projects includes Phaser as a dependency, feel free to remove if the game is not a Phaser game and add the library of your choice.
@@ -51,7 +51,7 @@ If you want to compress the audio files you can run the following command:
 
 `yarn compress-audio`
 
-It will compress audio files in the /dist folder. It runs the "compress-audio.sh" bash file and utilizes FFmpeg.
+It will compress audio files in the `/dist` folder. It runs the "compress-audio.sh" bash file and utilizes FFmpeg.
 
 #### Generating Audio Sprites
 
