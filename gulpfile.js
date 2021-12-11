@@ -29,7 +29,15 @@ gulp.task("compressImages", compressImages);
 function createAudioSprites() {
   return new Promise(function(resolve, reject) {
     try {
-      createAudioSpritesFiles('./src/sounds', './dist/sounds/sounds_audio_sprite');
+      const inputFile = './src/sounds';
+      checkFileExists(inputFile).then((exists) => {
+        if(exists) {
+          createAudioSpritesFiles(inputFile, './dist/sounds/sounds_audio_sprite');
+        } else {
+          console.log(`${inputFile} does not exist`);
+        }
+      })
+
       resolve();
     } catch (err) {
       reject(err);
@@ -53,12 +61,29 @@ function createAudioSpritesFiles(sourcePath, outputPath) {
 
   let opts = {output: `${outputPath}`};
   audiosprite(files, opts, function(err, obj) {
-    if (err) return console.error(err)
-    fs.writeFile(`${outputPath}.json`, JSON.stringify(obj, null, 2), () => {
-      console.log(`%cAudio sprite files generated with ${outputPath}.json`, ['color: #00FF00'])
-    })
+    if (err) return console.error(err);
 
-  });
+    fs.writeFile(`${outputPath}.json`, JSON.stringify(obj, null, 2), () => {
+      fs.readdir(sourcePath, (err, files)=>{
+        for (let i = 0, len = files.length; i < len; i++) {
+          let match = files[i].match(new RegExp( outputPath, 'g' ));
+          if(match === null) {
+            const fileToDelete = `./${sourcePath.replace("src", "dist")}/${files[i]}`;
+            fs.unlink(fileToDelete, () => {
+              console.log(`create audio sprites gulp task removed: ${files[i]}`)
+            });
+          }
+        }
+      });
+      console.log(`Audio sprite files generated with ${outputPath}.json file`);
+    })
+  })
+}
+
+function checkFileExists(file) {
+  return fs.promises.access(file, fs.constants.F_OK)
+    .then(() => true)
+    .catch(() => false)
 }
 
 gulp.task('default', gulp.series("bundleJavascriptViaWebpack", "createAudioSprites", "compressImages"));

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 TEMP_DIR="./temp"
-BITRATE_KB=126
+BITRATE_KB=96
 function traverse_directory_and_ffmpeg_compress() {
-  find * -maxdepth 0 -type f -exec ffmpeg -y -i ./{} -map 0:a:0 -b:a "${BITRATE_KB}"k "$TEMP_DIR"/{} \;
+  find * -maxdepth 0 -type f -exec ffmpeg -y -i ./{} -c:v libvpx-vp9 -b:v 0 -crf 35 -pass 2 -keyint_min 30 -g 30 "$TEMP_DIR"/{} \;
 }
 
 compress_audio () {
