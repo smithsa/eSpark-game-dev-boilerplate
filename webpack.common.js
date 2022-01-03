@@ -19,6 +19,7 @@ module.exports = {
         { from: "./src/css", to: "./css" },
         { from: "./src/index.html", to: "./index.html" }
       ],
+      noErrorOnMissing: true
     }),
   ],
   output: {
