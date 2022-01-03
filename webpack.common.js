@@ -16,6 +16,7 @@ module.exports = {
         { from: "./src/music", to: "./music" },
         { from: "./src/sounds", to: "./sounds" },
         { from: "./src/voice", to: "./voice" },
+        { from: "./src/css", to: "./css" },
         { from: "./src/index.html", to: "./index.html" }
       ],
     }),
