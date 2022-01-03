@@ -12,14 +12,13 @@ module.exports = {
     // TODO copy all contents over to the dist
     new CopyPlugin({
       patterns: [
-        { from: "./src/img", to: "./img" },
-        { from: "./src/music", to: "./music" },
-        { from: "./src/sounds", to: "./sounds" },
-        { from: "./src/voice", to: "./voice" },
-        { from: "./src/css", to: "./css" },
+        { from: "./src/img", to: "./img", noErrorOnMissing: true },
+        { from: "./src/music", to: "./music", noErrorOnMissing: true },
+        { from: "./src/sounds", to: "./sounds", noErrorOnMissing: true},
+        { from: "./src/voice", to: "./voice", noErrorOnMissing: true},
+        { from: "./src/css", to: "./css", noErrorOnMissing: true},
         { from: "./src/index.html", to: "./index.html" }
-      ],
-      noErrorOnMissing: true
+      ]
     }),
   ],
   output: {
