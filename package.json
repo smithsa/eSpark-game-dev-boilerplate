@@ -16,6 +16,8 @@
     "phaser": "^3.55.2"
   },
   "devDependencies": {
+    "@squoosh/lib": "^0.4.0",
+    "image-minimizer-webpack-plugin": "^3.2.3",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "audiosprite": "^0.7.2",
